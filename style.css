@@ -1,0 +1,140 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: black;
+    color: white;
+    font-size: clamp(12px, 1.2vw, 16px);
+}
+
+.left {
+    width: 25vw;
+    padding: 10px;
+}
+
+.right {
+    width: 75vw;
+}
+
+.home ul li {
+    display: flex;
+    list-style: none;
+    width: 14px;
+    gap: 15px;
+    padding-top: 14px;
+    font-weight: bold;
+    font-size: clamp(12px, 1.2vw, 16px);
+}
+
+.heading {
+    width: 100%;
+    gap: 15px;
+    padding: 23px 14px;
+    align-items: center;
+}
+
+.heading h2 {
+    font-weight: bold;
+    font-size: clamp(13px, 1.5vw, 18px);
+}
+
+.library {
+    min-height: 80vh;
+    position: relative;
+}
+.footer {
+    margin-top: 20px;
+    font-size: clamp(10px, 1vw, 14px);
+    opacity: 0.8;
+    position: absolute;
+    bottom: 0;
+}
+
+.footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.footer-links a {
+    color: white;
+    text-decoration: none;
+    font-size: clamp(10px, 1vw, 14px);
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+}
+.lang-button {
+    display: flex;
+    align-items: center;
+    background: none;
+    border: 1px solid white;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.lang-button:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.lang-icon {
+    display: flex;
+    align-items: center;
+    margin-right: 8px;
+}
+
+.lang-icon svg {
+    width: 16px;
+    height: 16px;
+    fill: white;
+}
+@media (max-width: 768px) {
+    .left {
+        width: 100%;
+    }
+    .right {
+        width: 100%;
+    }
+}
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #121212;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+.header .nav{
+    display: flex;
+    gap: 15px;
+}       
+.spotify-playlist{
+    padding: 6px;
+}
+.spotify-playlist h1{
+    font-size: 24px;
+    font-weight: bold;
+}
+.spotify-playlist .card{
+    width: 200px;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #252525;
+}
+.card >*{
+    padding-top: 10px;
+}
+.card img{
+    width: 100%;
+    object-fit: contain;
+}
