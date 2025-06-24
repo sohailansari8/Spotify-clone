@@ -231,13 +231,6 @@ body {
     /* pointer-events: none;  */
     transition: opacity 0.3s ease, transform 0.3s ease;
 }
-
-
-.card {
-    position: relative;
-    /* This makes play-button positioning relative to the card */
-}
-
 .card:hover .play-button {
     opacity: 1;
     transform: scale(1.05);
@@ -374,6 +367,7 @@ body {
     position: absolute;
     bottom: 0;
     border-radius: 10px;
+    cursor: pointer;
 
 }
 .circle{
@@ -388,4 +382,16 @@ body {
 }
 .card-container::-webkit-scrollbar {
     display: none; /* Chrome, Safari, Opera */
+}
+.songbtns img {
+    cursor: pointer;
+}
+.songInfo , .songtime {
+    color: black ;
+    font-size: 10px;
+    padding: 0 12px;
+}
+.abovebar{
+    display: flex;
+    justify-content: space-between;
 }
