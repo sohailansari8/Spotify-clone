@@ -1,10 +1,10 @@
 console.log(" Hello world ");
-
+let songs;
 let currentsong = new Audio();
-
+let currfolder;
 function formatTime(seconds) {
     if (isNaN(seconds) || seconds < 0) {
-        return "Invalid input";
+        return "00:00";
     }
 
     const minutes = Math.floor(seconds / 60);
@@ -17,9 +17,9 @@ function formatTime(seconds) {
 }
 
 
-async function getsongs() {
-
-    let a = await fetch(`http://127.0.0.1:3000/songs/`)
+async function getsongs(folder) {
+    currfolder = folder ; 
+    let a = await fetch(`http://127.0.0.1:3000/${folder}/`)
     let response = await a.text();
     let div = document.createElement("div");
     div.innerHTML = response;
@@ -28,7 +28,7 @@ async function getsongs() {
     for (let i = 0; i < as.length; i++) {
         const Element = as[i];
         if (Element.href.endsWith(".mp3")) {
-            songs.push(Element.href.split("/songs/")[1]);
+            songs.push(Element.href.split(`/${folder}/`)[1]);
         }
     }
     return songs;
@@ -36,7 +36,7 @@ async function getsongs() {
 
 const playMusic = (track, pause = false) => {
     // let audio = new Audio("/songs/" + track);
-    currentsong.src = "/songs/" + track
+    currentsong.src = `/${currfolder}/` + track
     if (!pause) {
         currentsong.play();
         play.src = "pause.svg"
@@ -47,7 +47,7 @@ const playMusic = (track, pause = false) => {
 }
 
 async function main() {
-    let songs = await getsongs();
+     songs = await getsongs("songs/ncs");
     console.log(songs);
     playMusic(songs[0], true)
 
@@ -100,6 +100,35 @@ async function main() {
         currentsong.currentTime = (currentsong.duration) * percent;
     })
 
+    document.querySelector(".hamburger").addEventListener("click" ,()=> {
+        document.querySelector(".left").style.left = "0"
+    })
+    document.querySelector(".close").addEventListener("click" , () => {
+        document.querySelector(".left").style.left = "-120%"
+    })
 
+    previous.addEventListener("click" , () => {
+  let index = songs.indexOf( currentsong.src.split("/").slice(-1)[0])
+       if(index-1 >= 0){
+
+           playMusic(songs[index-1])
+        }
+    })
+    next.addEventListener("click" , () => {
+        let index = songs.indexOf( currentsong.src.split("/").slice(-1)[0])
+       if(index+1 < songs.length-1){
+           playMusic(songs[index+1])
+        }
+    })
+    document.querySelector(".volume").addEventListener("click", () => {
+        const rangeElement = document.getElementsByClassName("range")[0];
+        if (rangeElement) {
+            rangeElement.style.display = (rangeElement.style.display === "block") ? "none" : "block";
+        }
+    })
+    document.querySelector(".range").getElementsByTagName("input")[0].addEventListener("change", (e)=> {
+        currentsong.volume = parseInt(e.target.value)/100;
+    })
+    
 };
 main();
