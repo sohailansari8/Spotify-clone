@@ -13,9 +13,7 @@ This clone includes a comprehensive set of features:
 - **Audio Controls:** Play, pause, skip tracks, shuffle, repeat, and seek within songs.
 - **Volume & Mute:** Adjust volume or mute playback instantly.
 - **Track Progress Bar:** Visual progress indicator with seeking functionality.
-- **Favorites & Recently Played:** Mark tracks as favorites and quickly access recently played songs.
-- **Dark/Light Mode:** Toggle between dark and light themes for comfortable listening.
-- **User Authentication:** Secure login and profile management (if enabled).
+- **Favorites & Recently Played:** Mark tracks as favorites and quickly access recently played songs
 - **Mobile-Friendly:** Fully responsive for use on phones and tablets.
 - **Custom Album Artwork:** Display your own album covers for a personalized look.
 
