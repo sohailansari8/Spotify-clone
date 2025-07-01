@@ -62,7 +62,7 @@ const playMusic = (track, pause = false) => {
     currentsong.src = `/${currfolder}/` + track
     if (!pause) {
         currentsong.play();
-        play.src = "pause.svg"
+        play.src = "assets/pause.svg"
 
     }
     document.querySelector(".songInfo").innerHTML = decodeURI(track)
