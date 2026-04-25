@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sportify - A beautiful music player clone. Browse playlists, discover new music, and enjoy seamless playback.">
+    <title>Sportify - Music Player</title>
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdn.hugeicons.com/font/hgi-stroke-rounded.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="/stylesheets/utility.css">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+
+<body>
+    <div class="container flex bg-black">
+        <!-- Sidebar -->
+        <aside class="left">
+            <div class="close" role="button" aria-label="Close sidebar" tabindex="0">
+                <img src="/images/close.svg" alt="Close sidebar">
+            </div>
+            <div class="home bg-grey rounded m-1 p-1">
+                <div class="logo">
+                    <img class="invert" src="/images/logo.svg" alt="Sportify logo">
+                </div>
+                <nav>
+                    <ul>
+                        <li><img class="invert" src="/images/home.svg" alt="">Home</li>
+                        <li><img class="invert" src="/images/search.svg" alt="">Search</li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="library bg-grey rounded p-1">
+                <div class="heading">
+                    <h2>
+                        <i class="hgi hgi-stroke hgi-playlist-03"></i> Your Library
+                    </h2>
+                    <div class="song-list">
+                        <h3>Your Songs</h3>
+                        <ul id="songList">
+                        </ul>
+                    </div>
+                </div>
+                <footer class="footer">
+                    <div class="footer-links">
+                        <a href="https://www.spotify.com/in-en/legal/">Legal</a>
+                        <a href="https://www.spotify.com/in-en/safetyandprivacy/">Safety & Privacy Center</a>
+                        <a href="https://www.spotify.com/in-en/legal/privacy-policy/">Privacy Policy</a>
+                        <a href="https://www.spotify.com/in-en/legal/cookies-policy/">Cookies</a>
+                        <a href="https://www.spotify.com/in-en/legal/privacy-policy/#s3">About Ads</a>
+                        <a href="https://www.spotify.com/in-en/accessibility/">Accessibility</a>
+                    </div>
+
+                    <div class="footer-extra">
+                        <a href="https://www.spotify.com/legal/cookies-policy/" target="_blank" rel="noopener"
+                            class="footer-bold">Cookies</a>
+                    </div>
+
+                    <div class="language-selector">
+                        <button class="lang-button" aria-label="Select language">
+                            <span class="lang-icon">
+                                <svg viewBox="0 0 16 16" role="img" aria-hidden="true">
+                                    <path
+                                        d="M8.152 16H8a8 8 0 1 1 .152 0zm-.41-14.202c-.226.273-.463.713-.677 1.323-.369 1.055-.626 2.496-.687 4.129h3.547c-.06-1.633-.318-3.074-.687-4.129-.213-.61-.45-1.05-.676-1.323-.194-.235-.326-.285-.385-.296h-.044c-.055.007-.19.052-.391.296zM4.877 7.25c.062-1.771.34-3.386.773-4.624.099-.284.208-.554.329-.806a6.507 6.507 0 0 0-4.436 5.43h3.334zm-3.334 1.5a6.507 6.507 0 0 0 4.436 5.43 7.974 7.974 0 0 1-.33-.806c-.433-1.238-.71-2.853-.772-4.624H1.543zm4.835 0c.061 1.633.318 3.074.687 4.129.214.61.451 1.05.677 1.323.202.244.336.29.391.297l.044-.001c.06-.01.19-.061.385-.296.226-.273.463-.713.676-1.323.37-1.055.626-2.496.687-4.129H6.378zm5.048 0c-.061 1.771-.339 3.386-.772 4.624-.082.235-.171.46-.268.674a6.506 6.506 0 0 0 4.071-5.298h-3.03zm3.031-1.5a6.507 6.507 0 0 0-4.071-5.298c.097.214.186.44.268.674.433 1.238.711 2.853.772 4.624h3.031z">
+                                    </path>
+                                </svg>
+                            </span>
+                            English
+                        </button>
+                    </div>
+                </footer>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="right bg-grey rounded m-1 p-1">
+            <div class="header">
+                <div class="nav">
+                    <div class="flex center item-center gap">
+                        <img class="invert hamburger" src="/images/hamburger.svg" alt="Open menu" role="button" tabindex="0" aria-label="Open sidebar menu">
+                        <i class="hgi hgi-stroke hgi-arrow-left-01" role="button" tabindex="0" aria-label="Go back"></i>
+                        <i class="hgi hgi-stroke hgi-arrow-right-01" role="button" tabindex="0" aria-label="Go forward"></i>
+                    </div>
+                </div>
+                <div class="buttons">
+                    <button class="login-btn" id="loginBtn">Log In</button>
+                    <button class="signup-btn" id="signupBtn">Sign Up</button>
+                </div>
+            </div>
+
+            <section class="spotify-playlist">
+                <h1>Spotify Playlists</h1>
+                <div class="loading-indicator" id="loadingIndicator">
+                    <div class="spinner"></div>
+                    <p>Loading playlists...</p>
+                </div>
+                <div class="card-container" id="cardContainer">
+                </div>
+
+                <!-- Playbar -->
+                <div class="playbar" id="playbar">
+                    <div class="abovebar">
+                        <div class="songInfo" id="songInfo">
+                        </div>
+                        <div class="songbtns">
+                            <img id="previous" src="/images/prevsong.svg" alt="Previous song" role="button" tabindex="0" aria-label="Previous song">
+                            <img id="play" src="/images/play.svg" alt="Play" role="button" tabindex="0" aria-label="Play or pause">
+                            <img id="next" src="/images/nextsong.svg" alt="Next song" role="button" tabindex="0" aria-label="Next song">
+                        </div>
+                        <div class="timevol">
+                            <div class="songtime" id="songTime">
+                            </div>
+                            <div class="volume" id="volumeControl">
+                                <img src="/images/volume.svg" alt="Volume" role="button" tabindex="0" aria-label="Toggle volume slider" id="volumeIcon">
+                                <div class="range" id="volumeRange">
+                                    <input type="range" name="volume" id="volumeSlider" min="0" max="100" value="100" aria-label="Volume level">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="seekbar" id="seekbar" role="slider" aria-label="Seek through song" tabindex="0">
+                        <div class="circle" id="seekCircle">
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="/javascripts/script.js"></script>
+</body>
+
+</html>
